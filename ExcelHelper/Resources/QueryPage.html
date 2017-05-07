@@ -102,7 +102,7 @@
                 var lines = text.split(/\n/);
 
                 for (var j = 0; j < lines.length; j++) {
-                    lines[j] = lines[j].trim();
+                    lines[j] = lines[j].replace(/\t/g, '');
                 }
 
                 text = lines.join("\n");
