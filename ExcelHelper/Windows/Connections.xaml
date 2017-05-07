@@ -1,0 +1,71 @@
+﻿<Window x:Class="ExcelHelper.Windows.Connections"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:app="clr-namespace:ExcelHelper.Common.Models;assembly=ExcelHelper.Common"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance app:ConnectionModel}"
+        Title="Connections" WindowStartupLocation="CenterOwner" Style="{StaticResource MainWindowStyle}" Background="#55969696"
+        AllowsTransparency="True" ShowInTaskbar="False">
+    <Grid>
+        <DockPanel Style="{StaticResource DialogPanel}" Width="850" Height="500">
+            <DockPanel DockPanel.Dock="Top" Style="{StaticResource DialogTitleBarStyle}">
+                <Image DockPanel.Dock="Left" Style="{StaticResource LogoImageStyle}" />
+                <Label Style="{StaticResource DialogTitle}" Content="Excel Helper - Connections" />
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Background="#FFAAAAAA">
+                <Button x:Name="BtnClose" Content="Close" Style="{StaticResource DialogButtons}" Visibility="Visible" IsCancel="True" DockPanel.Dock="Right" Click="BtnClose_OnClick" />
+                <Button x:Name="BtnCancel" Content="Cancel" Style="{StaticResource DialogButtons}" DockPanel.Dock="Right" Click="BtnCancel_OnClick" />
+                <Button x:Name="BtnSave" Content="Save" Style="{StaticResource DialogButtons}" Visibility="Visible" IsEnabled="False" IsDefault="True" DockPanel.Dock="Right" Click="BtnSave_OnClick" />
+            </DockPanel>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+
+
+                <ListView x:Name="LvConnections" Grid.Column="0" Grid.RowSpan="5" SelectionChanged="LvConnections_OnSelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding ConnectionName}" Width="415"  />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <DockPanel LastChildFill="False" Grid.Column="1" Grid.Row="0">
+                    <Button x:Name="BtnDelete" Content="Delete" Style="{StaticResource DialogButtons}" Width="70" Height="30" DockPanel.Dock="Right" Click="BtnDelete_OnClick" />
+                    <Button Content="New" Style="{StaticResource DialogButtons}" Width="70" Height="30" Visibility="Visible" DockPanel.Dock="Right" Click="BtnNew_OnClick" />
+                    <TextBox Visibility="Collapsed" Text="{Binding OldConnectionName, UpdateSourceTrigger=PropertyChanged}" />
+                </DockPanel>
+
+                <Label Grid.Column="1" Grid.Row="1" Margin="10,0,0,0" Content="Connection Data" FontWeight="Bold" Style="{StaticResource OptionsLabelStyle}" />
+
+                <DockPanel Grid.Column="1" Grid.Row="2">
+                    <Label DockPanel.Dock="Left" Content="Connection Name" Style="{StaticResource OptionsLabelStyle}" />
+                    <TextBox x:Name="TbConnectionName" Height="32" IsEnabled="False" Margin="25,0,10,0" Style="{StaticResource CrudTextBoxStyle}"
+                             GotKeyboardFocus="TextBox_OnGotKeyboardFocus" Text="{Binding ConnectionName, UpdateSourceTrigger=PropertyChanged}" />
+                </DockPanel>
+
+                <DockPanel Grid.Column="1" Grid.Row="3">
+                    <Label DockPanel.Dock="Left" Content="Connection String" Style="{StaticResource OptionsLabelStyle}" />
+                    <TextBox x:Name="TbConnectionString" Margin="25,0,10,0" TextWrapping="Wrap" Style="{StaticResource CrudTextBoxStyle}"
+                             VerticalAlignment="Stretch" Height="Auto" VerticalContentAlignment="Top" IsEnabled="False" VerticalScrollBarVisibility="Auto"
+                             GotKeyboardFocus="TextBox_OnGotKeyboardFocus" Text="{Binding ConnectionString, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" />
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

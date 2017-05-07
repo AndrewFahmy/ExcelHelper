@@ -1,0 +1,259 @@
+﻿<Window x:Class="ExcelHelper.Windows.Options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:ExcelHelper.Common.Models;assembly=ExcelHelper.Common"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance models:OptionsModel}"
+        Title="Options" WindowStartupLocation="CenterOwner" Style="{StaticResource MainWindowStyle}" Background="#55969696"
+        AllowsTransparency="True" ShowInTaskbar="False">
+    <Grid>
+        <DockPanel Style="{StaticResource DialogPanel}" Width="850" Height="500">
+            <DockPanel DockPanel.Dock="Top" Style="{StaticResource DialogTitleBarStyle}">
+                <Image DockPanel.Dock="Left" Style="{StaticResource LogoImageStyle}" />
+                <Label Style="{StaticResource DialogTitle}" Content="Excel Helper - Options" />
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Background="#FFAAAAAA">
+                <Button x:Name="BtnCancel" Content="Cancel" Style="{StaticResource DialogButtons}" Visibility="Visible" IsCancel="True" DockPanel.Dock="Right" Click="BtnCancel_OnClick" />
+                <Button x:Name="BtnSave" Content="Save" Style="{StaticResource DialogButtons}" Visibility="Visible" IsDefault="True" DockPanel.Dock="Right" Click="BtnSave_OnClick" />
+            </DockPanel>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" BorderBrush="#FF999999" BorderThickness="0,0,1,0">
+                    <DockPanel LastChildFill="False">
+                        <Label DockPanel.Dock="Top" Content="Header Row Settings" FontWeight="Bold" Margin="0,25,0,0" Style="{StaticResource OptionsLabelStyle}" />
+                        <DockPanel DockPanel.Dock="Top" Margin="5,30,0,30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Background" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Style="{StaticResource OptionsLabelStyle}" />
+
+
+                                <Label Content="Red" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" Style="{StaticResource OptionsLabelStyle}" />
+                                <Label Content="Green" Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center" Style="{StaticResource OptionsLabelStyle}" />
+                                <Label Content="Blue" Grid.Column="3" Grid.Row="0" HorizontalContentAlignment="Center" Style="{StaticResource OptionsLabelStyle}" />
+
+                                <TextBox x:Name="TbHeaderBgRed" Grid.Column="1" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Tag="Header" Width="65" HorizontalContentAlignment="Center"
+                                         Text="{Binding Path=HeaderBgRed, UpdateSourceTrigger=PropertyChanged}" TextChanged="BgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                                <TextBox x:Name="TbHeaderBgGreen" Grid.Column="2" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Tag="Header" Width="65" HorizontalContentAlignment="Center"
+                                         Text="{Binding Path=HeaderBgGreen, UpdateSourceTrigger=PropertyChanged}" TextChanged="BgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                                <TextBox x:Name="TbHeaderBgBlue" Grid.Column="3" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Tag="Header" Width="65" HorizontalContentAlignment="Center"
+                                         Text="{Binding Path=HeaderBgBlue, UpdateSourceTrigger=PropertyChanged}" TextChanged="BgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+
+                                <TextBlock x:Name="TbHeaderBackground" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Margin="15,10" />
+                            </Grid>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Foreground" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Style="{StaticResource OptionsLabelStyle}" />
+
+
+                                <Label Content="Red" Grid.Column="1" HorizontalContentAlignment="Center" Grid.Row="0" Style="{StaticResource OptionsLabelStyle}" />
+                                <Label Content="Green" Grid.Column="2" HorizontalContentAlignment="Center" Grid.Row="0" Style="{StaticResource OptionsLabelStyle}" />
+                                <Label Content="Blue" Grid.Column="3" HorizontalContentAlignment="Center" Grid.Row="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                                <TextBox x:Name="TbHeaderFgRed" Grid.Column="1" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Tag="Header" Width="65" HorizontalContentAlignment="Center"
+                                         Text="{Binding Path=HeaderFgRed, UpdateSourceTrigger=PropertyChanged}" TextChanged="FgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                                <TextBox x:Name="TbHeaderFgGreen" Grid.Column="2" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Tag="Header" Width="65" HorizontalContentAlignment="Center"
+                                         Text="{Binding Path=HeaderFgGreen, UpdateSourceTrigger=PropertyChanged}" TextChanged="FgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                                <TextBox x:Name="TbHeaderFgBlue" Grid.Column="3" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Tag="Header" Width="65" HorizontalContentAlignment="Center"
+                                         Text="{Binding Path=HeaderFgBlue, UpdateSourceTrigger=PropertyChanged}" TextChanged="FgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+
+                                <TextBlock x:Name="TbHeaderForeground" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Margin="15,10" />
+                            </Grid>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Font" Grid.Column="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                                <ComboBox x:Name="CbHeaderFonts" Grid.Column="1" Margin="25,0" Style="{StaticResource CrudComboBoxStyle}" 
+                                          SelectedValue="{Binding Path=HeaderFontName, UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="ComboBox_OnGotKeyboardFocus" />
+                            </Grid>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Font Size" Grid.Column="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                                <TextBox x:Name="TbHeaderFontSize" Grid.Column="1" Margin="25,0" Style="{StaticResource CrudTextBoxStyle}"
+                                         Text="{Binding Path=HeaderFontSize, UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+                            </Grid>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Font Style" Grid.Column="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                                <CheckBox Content="Bold" Grid.Column="1" VerticalContentAlignment="Center" IsChecked="{Binding Path=HeaderIsBold, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DefaultFont}" FontWeight="Bold" />
+                                <CheckBox Content="Italic" Grid.Column="2" VerticalContentAlignment="Center" IsChecked="{Binding Path=HeaderIsItalic, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DefaultFont}" FontWeight="Bold" />
+                            </Grid>
+                        </DockPanel>
+                    </DockPanel>
+                </Border>
+
+                <DockPanel Grid.Column="1" LastChildFill="False">
+                    <Label DockPanel.Dock="Top" Content="Normal Row Settings" FontWeight="Bold" Margin="0,25,0,0" Style="{StaticResource OptionsLabelStyle}" />
+                    <DockPanel DockPanel.Dock="Top" Margin="5,30,0,30">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Background" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Style="{StaticResource OptionsLabelStyle}" />
+
+
+                            <Label Content="Red" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" Style="{StaticResource OptionsLabelStyle}" />
+                            <Label Content="Green" Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center" Style="{StaticResource OptionsLabelStyle}" />
+                            <Label Content="Blue" Grid.Column="3" Grid.Row="0" HorizontalContentAlignment="Center" Style="{StaticResource OptionsLabelStyle}" />
+
+                            <TextBox x:Name="TbRowBgRed" Grid.Column="1" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Width="65" HorizontalContentAlignment="Center"
+                                     Text="{Binding Path=RowBgRed, UpdateSourceTrigger=PropertyChanged}" TextChanged="BgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                            <TextBox x:Name="TbRowBgGreen" Grid.Column="2" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Width="65" HorizontalContentAlignment="Center"
+                                     Text="{Binding Path=RowBgGreen, UpdateSourceTrigger=PropertyChanged}" TextChanged="BgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                            <TextBox x:Name="TbRowBgBlue" Grid.Column="3" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Width="65" HorizontalContentAlignment="Center" 
+                                     Text="{Binding Path=RowBgBlue, UpdateSourceTrigger=PropertyChanged}" TextChanged="BgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+
+                            <TextBlock x:Name="TbRowBackground" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Margin="15,10" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Foreground" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Style="{StaticResource OptionsLabelStyle}" />
+
+
+                            <Label Content="Red" Grid.Column="1" HorizontalContentAlignment="Center" Grid.Row="0" Style="{StaticResource OptionsLabelStyle}" />
+                            <Label Content="Green" Grid.Column="2" HorizontalContentAlignment="Center" Grid.Row="0" Style="{StaticResource OptionsLabelStyle}" />
+                            <Label Content="Blue" Grid.Column="3" HorizontalContentAlignment="Center" Grid.Row="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                            <TextBox x:Name="TbRowFgRed" Grid.Column="1" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Width="65" HorizontalContentAlignment="Center"
+                                     Text="{Binding Path=RowFgRed, UpdateSourceTrigger=PropertyChanged}" TextChanged="FgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                            <TextBox x:Name="TbRowFgGreen" Grid.Column="2" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Width="65" HorizontalContentAlignment="Center"
+                                     Text="{Binding Path=RowFgGreen, UpdateSourceTrigger=PropertyChanged}" TextChanged="FgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+                            <TextBox x:Name="TbRowFgBlue" Grid.Column="3" Grid.Row="1" Style="{StaticResource CrudTextBoxStyle}" Width="65" HorizontalContentAlignment="Center"
+                                     Text="{Binding Path=RowFgBlue, UpdateSourceTrigger=PropertyChanged}" TextChanged="FgColorTextBoxes_OnTextChanged" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+
+
+                            <TextBlock x:Name="TbRowForeground" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Margin="15,10" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Font" Grid.Column="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                            <ComboBox x:Name="CbRowFonts" Grid.Column="1" Margin="25,0" Style="{StaticResource CrudComboBoxStyle}"
+                                      SelectedValue="{Binding Path=RowFontName, UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="ComboBox_OnGotKeyboardFocus" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Font Size" Grid.Column="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                            <TextBox x:Name="TbRowFontSize" Grid.Column="1" Margin="25,0" Style="{StaticResource CrudTextBoxStyle}"
+                                     Text="{Binding Path=RowFontSize, UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="TextBox_OnGotKeyboardFocus" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="5,0,0,30">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Font Style" Grid.Column="0" Style="{StaticResource OptionsLabelStyle}" />
+
+                            <CheckBox Content="Bold" Grid.Column="1" VerticalContentAlignment="Center" IsChecked="{Binding Path=RowIsBold, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DefaultFont}" FontWeight="Bold" />
+                            <CheckBox Content="Italic" Grid.Column="2" VerticalContentAlignment="Center" IsChecked="{Binding Path=RowIsItalic, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DefaultFont}" FontWeight="Bold" />
+                        </Grid>
+                    </DockPanel>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

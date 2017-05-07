@@ -1,0 +1,22 @@
+﻿<Window x:Class="ExcelHelper.Windows.Snippets"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Height="745" Style="{StaticResource MainWindowStyle}" Background="{StaticResource MainWindowBackground}" ShowInTaskbar="False">
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Label Style="{StaticResource PageTitle}">Snippet Manager</Label>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Height="35" Margin="5">
+                <Button Content="Cancel" DockPanel.Dock="Right" Style="{StaticResource ActionButton}" Click="BtnCancel_OnClick" />
+                <Button Content="Save" DockPanel.Dock="Right" Style="{StaticResource ActionButton}" Click="BtnSave_OnClick" />
+            </DockPanel>
+
+            <WebBrowser x:Name="WbQuery" Focusable="True" />
+        </DockPanel>
+
+    </Grid>
+</Window>

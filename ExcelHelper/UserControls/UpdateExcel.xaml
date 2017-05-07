@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ExcelHelper.UserControls.UpdateExcel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1280" Loaded="UpdateExcel_OnLoaded">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <DockPanel Margin="0,0,0,5">
+                    <Label DockPanel.Dock="Left" Style="{StaticResource InitialDataLabelStyle}">Connection</Label>
+                    <DockPanel DockPanel.Dock="Right">
+                        <CheckBox x:Name="ChkAddQuery" DockPanel.Dock="Top" Style="{StaticResource InitialDataCheckboxStyle}">Add Query</CheckBox>
+                        <CheckBox x:Name="ChkHasHeader" DockPanel.Dock="Bottom" Style="{StaticResource InitialDataCheckboxStyle}" IsChecked="True">Has Header</CheckBox>
+                    </DockPanel>
+                    <ComboBox Name="CbConnections" DisplayMemberPath="Name" SelectedValuePath="Value" Template="{DynamicResource ComboBoxTemplate}" 
+                              Style="{StaticResource CrudComboBoxStyle}" GotKeyboardFocus="CbConnections_OnGotKeyboardFocus" />
+                </DockPanel>
+                <DockPanel Margin="0,0,0,5">
+                    <Label DockPanel.Dock="Left" Style="{StaticResource InitialDataLabelStyle}">Location</Label>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource FileBrowseButtonStyle}" Click="FileBrowse_OnClick">Browse</Button>
+                    <TextBox Name="TbLocation" GotKeyboardFocus="TbLocation_OnGotKeyboardFocus" IsReadOnly="True" Style="{StaticResource CrudTextBoxStyle}" />
+                </DockPanel>
+            </StackPanel>
+
+            <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+                <Image Name="LoadingImage" gif:ImageBehavior.AnimatedSource="../Resources/Loading.gif" Style="{StaticResource LoadingImage}"  />
+                <Label x:Name="LblTimer" Content="00:00:00" Style="{StaticResource TimerLabel}" />
+                <Button x:Name="BtnUpdate" Content="Update (F5)" DockPanel.Dock="Right" Style="{StaticResource ActionButton}" Click="BtnUpdate_OnClick" />
+                <Button x:Name="BtnCancel" Content="Cancel (F7)" DockPanel.Dock="Right" Style="{StaticResource ActionButton}" Click="BtnCancel_OnClick" />
+            </DockPanel>
+
+            <WebBrowser x:Name="WbQuery" KeyUp="WbQuery_OnKeyUp" />
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelHelper", "ExcelHelper\ExcelHelper.csproj", "{740154A6-9B5B-4933-86E6-16DA8EDE275D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelHelper.Common", "ExcelHelper.Common\ExcelHelper.Common.csproj", "{1BCDBF1C-4F5A-4359-87CC-828AD6020669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelHelper.Services", "ExcelHelper.Services\ExcelHelper.Services.csproj", "{ACC26F11-9FE9-4CE3-981E-058943377213}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{740154A6-9B5B-4933-86E6-16DA8EDE275D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740154A6-9B5B-4933-86E6-16DA8EDE275D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740154A6-9B5B-4933-86E6-16DA8EDE275D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740154A6-9B5B-4933-86E6-16DA8EDE275D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BCDBF1C-4F5A-4359-87CC-828AD6020669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BCDBF1C-4F5A-4359-87CC-828AD6020669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BCDBF1C-4F5A-4359-87CC-828AD6020669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BCDBF1C-4F5A-4359-87CC-828AD6020669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACC26F11-9FE9-4CE3-981E-058943377213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC26F11-9FE9-4CE3-981E-058943377213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC26F11-9FE9-4CE3-981E-058943377213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC26F11-9FE9-4CE3-981E-058943377213}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://andrewmfahmy.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ExcelHelper.Common\\ExcelHelper.Common.csproj
+		SccProjectName1 = ExcelHelper.Common
+		SccLocalPath1 = ExcelHelper.Common
+		SccProjectUniqueName2 = ExcelHelper.Services\\ExcelHelper.Services.csproj
+		SccProjectName2 = ExcelHelper.Services
+		SccLocalPath2 = ExcelHelper.Services
+		SccProjectUniqueName3 = ExcelHelper\\ExcelHelper.csproj
+		SccProjectName3 = ExcelHelper
+		SccLocalPath3 = ExcelHelper
+	EndGlobalSection
+EndGlobal

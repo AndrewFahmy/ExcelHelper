@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>Query</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+        
+        pre {
+            margin: 0;
+        }
+    </style>
+    <script src="ace.js"></script>
+    <script src="theme-sqlserver.js"></script>
+    <script src="mode-sqlserver.js"></script>
+    <script src="snippets-sqlserver.js"></script>
+    <script type="text/javascript">
+        function LoadEditor() {
+            var editor = ace.edit("tb_query");
+            editor.setTheme("ace/theme/sqlserver");
+            editor.getSession().setMode("ace/mode/sqlserver");
+            editor.resize();
+
+            ace.config.loadModule("ace/snippets/sqlserver", function (m) {
+                if (m) {
+                    editor.insert(m.snippetText);
+                    var tb = document.getElementById("tb_queryText");
+                    tb.value = m.snippetText;
+                }
+            });
+
+            editor.$blockScrolling = Infinity;
+
+            editor.setShowPrintMargin(false);
+
+            editor.on('change', function () {
+                var tb = document.getElementById("tb_queryText");
+                tb.value = editor.getSession().getValue();
+            });
+        }
+
+        function pageKeyDown() {
+            if (event.keyCode === 116)
+                event.preventDefault();
+        }
+    </script>
+</head>
+
+<body onload="LoadEditor()" onkeydown="pageKeyDown()">
+    <textarea id="tb_query"></textarea>
+    <textarea id="tb_queryText" style="display: none;"></textarea>
+</body>
+
+</html>
