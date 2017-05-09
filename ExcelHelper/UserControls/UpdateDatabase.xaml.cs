@@ -122,13 +122,9 @@ namespace ExcelHelper.UserControls
             CbConnections.ResetValidation();
         }
 
-        private void TbLocation_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TbLocation.ResetValidation();
-        }
-
         private void FileBrowse_OnClick(object sender, EventArgs e)
         {
+            TbLocation.ResetValidation();
             _openFileDialog.ShowDialog();
         }
 

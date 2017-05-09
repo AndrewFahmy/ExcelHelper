@@ -21,7 +21,7 @@
                 <DockPanel Margin="0,0,0,5">
                     <Label DockPanel.Dock="Left" Style="{StaticResource InitialDataLabelStyle}">Location</Label>
                     <Button DockPanel.Dock="Right" Style="{StaticResource FileBrowseButtonStyle}" Click="FileBrowse_OnClick">Browse</Button>
-                    <TextBox Name="TbLocation" GotKeyboardFocus="TbLocation_OnGotKeyboardFocus" IsReadOnly="True" Style="{StaticResource CrudTextBoxStyle}" />
+                    <TextBox Name="TbLocation" IsReadOnly="True" Style="{StaticResource CrudTextBoxStyle}" />
                 </DockPanel>
             </StackPanel>
 

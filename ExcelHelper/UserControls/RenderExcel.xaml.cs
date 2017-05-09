@@ -201,6 +201,7 @@ namespace ExcelHelper.UserControls
 
         private void FileBrowse_OnClick(object sender, RoutedEventArgs e)
         {
+            TbLocation.ResetValidation();
             _saveFileDialog.ShowDialog();
         }
 
@@ -212,11 +213,6 @@ namespace ExcelHelper.UserControls
         private void CbConnections_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             CbConnections.ResetValidation();
-        }
-
-        private void TbLocation_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TbLocation.ResetValidation();
         }
 
         private void WbQuery_OnKeyUp(object sender, KeyEventArgs e)
