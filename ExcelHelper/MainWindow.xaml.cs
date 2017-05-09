@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ExcelHelper.LocalCommon;
 using ExcelHelper.Common.Interfaces;
@@ -75,6 +76,7 @@ namespace ExcelHelper
 
             TabsContainer.Visibility = Visibility.Visible;
             TabsContainer.SelectedIndex = 0;
+            TabsContainer_OnSelectionChanged(null, null);
         }
 
         private void SnippetManager_OnClick(object sender, RoutedEventArgs e)
@@ -86,6 +88,22 @@ namespace ExcelHelper
             snippetWindow.Top = Top + 54;
 
             snippetWindow.Show();
+        }
+
+        private void TabsContainer_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            for(var i = 0; i < TabsContainer.Items.Count; i++)
+            {
+                var currentTabItem = (CustomTabItem)TabsContainer.Items[i];
+
+                if (i != TabsContainer.SelectedIndex)
+                {
+                    currentTabItem.IsActive = false;
+                    currentTabItem.OnLoseFocus();
+                }
+                else
+                    currentTabItem.IsActive = true;
+            }
         }
     }
 }

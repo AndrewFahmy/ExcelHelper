@@ -46,7 +46,8 @@ namespace ExcelHelper.UserControls
             WbQuery.Focus();
 
             _owner.LocationChanged += MainWindow_LocationChanged;
-            _parentTab.LostFocus += ParentTab_LostFocus;
+            _parentTab.OnLoseFocus += ParentTab_LoseFocus;
+
         }
 
         private bool ValidateControls()
@@ -65,8 +66,9 @@ namespace ExcelHelper.UserControls
             dialog.Top = _owner.Top + 78;
             dialog.Owner = _owner;
             _currentDialog.OnActionClick = button => ResetWindow();
+            _parentTab.CloseButton.IsEnabled = false;
 
-            if(_parentTab.IsKeyboardFocusWithin)
+            if (_parentTab.IsActive)
                 dialog.Show();
         }
 
@@ -75,8 +77,9 @@ namespace ExcelHelper.UserControls
             LoadingImage.Visibility = Visibility.Hidden;
             BtnRender.IsEnabled = BtnParse.IsEnabled = BtnCancel.IsEnabled = true;
             _tokenSource = null;
-            _currentDialog.Close();
+            _currentDialog?.Close();
             _currentDialog = null;
+            _parentTab.CloseButton.IsEnabled = true;
             LblTimer.Content = "00:00:00";
             LblTimer.Visibility = Visibility.Hidden;
         }
@@ -112,8 +115,6 @@ namespace ExcelHelper.UserControls
         {
             if (!ValidateControls()) return;
 
-            ShowLoadingIconAndTimerLabel();
-
             _tokenSource = new CancellationTokenSource();
 
             var query = Regex.Match(((IHTMLDocument2)WbQuery.Document).body.innerHTML,
@@ -121,7 +122,7 @@ namespace ExcelHelper.UserControls
 
             if (!string.IsNullOrWhiteSpace(query))
             {
-                WbQuery.Focus();
+                ShowLoadingIconAndTimerLabel();
 
                 var connectionString = CbConnections.SelectedValue.ToString();
 
@@ -159,16 +160,16 @@ namespace ExcelHelper.UserControls
         {
             if (!CbConnections.IsValid()) return;
 
-            ShowLoadingIconAndTimerLabel();
-
             var query = Regex.Match(((IHTMLDocument2)WbQuery.Document).body.innerHTML,
                     Constants.QueryValuePattern, RegexOptions.IgnoreCase | RegexOptions.Singleline).Value;
 
             if (string.IsNullOrWhiteSpace(query))
             {
-                ResetWindow();
+                OpenPopup(new Dialog("Query Missing", "Please write a query to parse", DialogButtons.Ok));
                 return;
             }
+
+            ShowLoadingIconAndTimerLabel();
 
             WbQuery.Focus();
 
@@ -186,7 +187,7 @@ namespace ExcelHelper.UserControls
                 return result;
             });
 
-            
+
             timer.Stop();
 
             OpenPopup(new Dialog(resultParse.result.ToString(), resultParse.message, DialogButtons.Ok));
@@ -250,7 +251,7 @@ namespace ExcelHelper.UserControls
             _currentDialog.Top = _owner.Top + 78;
         }
 
-        private void ParentTab_LostFocus(object sender, RoutedEventArgs e)
+        private void ParentTab_LoseFocus()
         {
             _currentDialog?.Hide();
         }

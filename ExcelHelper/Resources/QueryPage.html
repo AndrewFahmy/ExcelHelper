@@ -102,7 +102,7 @@
                 var lines = text.split(/\n/);
 
                 for (var j = 0; j < lines.length; j++) {
-                    lines[j] = lines[j].replace(/\t/g, '');
+                    lines[j] = trimStart(lines[j].replace(/\t/g, ''));
                 }
 
                 text = lines.join("\n");
@@ -111,6 +111,16 @@
             }
 
             return snippets;
+        }
+
+        function trimStart(string) {
+            var startIndex = 0;
+
+            while (string[startIndex] === ' ') {
+                startIndex++;
+            }
+
+            return string.substr(startIndex);
         }
     </script>
 </head>

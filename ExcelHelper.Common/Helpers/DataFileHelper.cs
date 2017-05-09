@@ -8,23 +8,21 @@ namespace ExcelHelper.Common.Helpers
 {
     public class DataFileHelper
     {
-        private static byte[] _entropy;
+        //private static byte[] _entropy;
 
         private static byte[] GetEntropy()
         {
             try
             {
-                if (_entropy != null) return _entropy;
+                //if (_entropy != null) return _entropy;
 
-                var searchObject = new ManagementObjectSearcher("Select ProcessorId From Win32_processor");
-                var list = searchObject.Get();
+                //var searchObject = new ManagementObjectSearcher("Select ProcessorId From Win32_processor");
+                //var list = searchObject.Get();
 
-                var processorId = list.Cast<ManagementObject>().Select(item => item["ProcessorId"].ToString())
-                    .FirstOrDefault();
+                //var processorId = list.Cast<ManagementObject>().Select(item => item["ProcessorId"].ToString())
+                //    .FirstOrDefault();
 
-                _entropy = Encoding.UTF7.GetBytes(processorId ?? "ExcelHelper_2017");
-
-                return _entropy;
+                return Encoding.UTF7.GetBytes("ExcelHelper_2017");
             }
             catch
             {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using ClosedXML.Excel;
 using ExcelHelper.Common.Models;
 
@@ -10,7 +9,6 @@ namespace ExcelHelper.Common.Helpers
     internal class ExcelWriter
     {
         private readonly ExecutionModel _model;
-        private readonly Regex _invalidXmlCharacters;
         private XLWorkbook _excelFile;
         private readonly OptionsModel _options;
         private int _rowCount;
@@ -19,7 +17,6 @@ namespace ExcelHelper.Common.Helpers
         {
             _model = model;
             _options = options;
-            _invalidXmlCharacters = new Regex(@"(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F\uFEFF\uFFFE\uFFFF]", RegexOptions.Compiled);
             _excelFile = CreateOrOpenFile();
         }
 
@@ -143,13 +140,6 @@ namespace ExcelHelper.Common.Helpers
         public void AddSheetCell(IXLCell cell, string value, bool isHeaderCell = false)
         {
             if (cell == null) return;
-
-            var htmlMatch = Regex.Match(value, "(>).*?(<)", RegexOptions.CultureInvariant);
-
-            if (htmlMatch.Success)
-                value = Regex.Replace(htmlMatch.Value, ">|<", string.Empty);
-
-            value = _invalidXmlCharacters.Replace(value, string.Empty);
 
             if (string.IsNullOrWhiteSpace(value))
             {

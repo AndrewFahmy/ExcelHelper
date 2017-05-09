@@ -44,7 +44,7 @@ namespace ExcelHelper.UserControls
             WbQuery.Focus();
 
             _owner.LocationChanged += MainWindow_LocationChanged;
-            _parentTab.LostFocus += ParentTab_LostFocus;
+            _parentTab.OnLoseFocus += ParentTab_LoseFocus;
         }
 
         private bool ValidateControls()
@@ -64,7 +64,7 @@ namespace ExcelHelper.UserControls
             dialog.Owner = _owner;
             _currentDialog.OnActionClick = button => ResetWindow();
 
-            if (_parentTab.IsKeyboardFocusWithin)
+            if (_parentTab.IsActive)
                 dialog.Show();
         }
 
@@ -138,14 +138,14 @@ namespace ExcelHelper.UserControls
 
             _tokenSource = new CancellationTokenSource();
 
-            ShowLoadingIconAndTimerLabel();
-
             var query = Regex.Match(((IHTMLDocument2) WbQuery.Document).body.innerHTML,
                     Constants.QueryValuePattern, RegexOptions.IgnoreCase | RegexOptions.Singleline)
                 .Value;
 
             if (!string.IsNullOrWhiteSpace(query))
             {
+                ShowLoadingIconAndTimerLabel();
+
                 WbQuery.Focus();
 
                 var connectionString = CbConnections.SelectedValue.ToString();
@@ -208,7 +208,7 @@ namespace ExcelHelper.UserControls
             _currentDialog.Top = _owner.Top + 78;
         }
 
-        private void ParentTab_LostFocus(object sender, RoutedEventArgs e)
+        private void ParentTab_LoseFocus()
         {
             _currentDialog?.Hide();
         }

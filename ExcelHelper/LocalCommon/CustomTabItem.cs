@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using ExcelHelper.UserControls;
 
@@ -6,12 +7,16 @@ namespace ExcelHelper.LocalCommon
 {
     public class CustomTabItem : TabItem
     {
+        public TabCloseButton CloseButton;
+        public bool IsActive;
+        public Action OnLoseFocus;
+
         public void SetHeader(string header)
         {
             var headerText = new TextBlock { Text = header };
             var dockpanel = new DockPanel { Style = (Style)Application.Current.Resources["TabPanelStyle"] };
 
-            var closebutton = new TabCloseButton(() =>
+            CloseButton = new TabCloseButton(() =>
             {
                 var tabCtl = Parent as TabControl;
                 tabCtl?.Items?.Remove(this);
@@ -20,8 +25,8 @@ namespace ExcelHelper.LocalCommon
                     tabCtl.Visibility = Visibility.Collapsed;
             });
 
-            DockPanel.SetDock(closebutton, Dock.Right);
-            dockpanel.Children.Add(closebutton);
+            DockPanel.SetDock(CloseButton, Dock.Right);
+            dockpanel.Children.Add(CloseButton);
             headerText.Style = (Style)Application.Current.Resources["TabHeaderStyle"];
             dockpanel.Children.Add(headerText);
 

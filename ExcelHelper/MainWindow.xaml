@@ -53,7 +53,7 @@
             </Menu>
         </DockPanel>
         <DockPanel Style="{StaticResource BodyContainerStyle}">
-            <TabControl Name="TabsContainer" Style="{StaticResource TabContainerStyle}"></TabControl>
+            <TabControl Name="TabsContainer" Style="{StaticResource TabContainerStyle}" SelectionChanged="TabsContainer_OnSelectionChanged"></TabControl>
         </DockPanel>
     </DockPanel>
 </Window>
