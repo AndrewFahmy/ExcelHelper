@@ -42,7 +42,7 @@ namespace ExcelHelper.Common.Helpers
 
         public void UpdateExcelData(CommandResult row, int rowIndex, bool isFirstRow)
         {
-            OpenSheet(row);
+            OpenSheet(_sheets[0]);
 
             if (isFirstRow)
                 _writer.AppendCellsToHeader(_currentSheet, row.Columns.Keys);
