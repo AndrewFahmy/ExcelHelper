@@ -3,4 +3,4 @@ mono:latest
 install:
 - travis_retry nuget restore -source "https://www.nuget.org/api/v2" ExcelHelper.sln
 script:
-  - cd ExcelHelper && xbuild /p:Configuration=Release ExcelHelper.csproj
+  - xbuild /p:Configuration=Release ExcelHelper.sln
