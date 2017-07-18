@@ -1,6 +1,0 @@
-language: csharp
-solution: ExcelHelper.sln
-install:
-  - nuget restore ExcelHelper.sln
-script:
-  - xbuild /p:Configuration=Release ExcelHelper.sln
