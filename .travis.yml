@@ -1,6 +1,6 @@
 language: csharp
-mono:latest
+solution: ExcelHelper.sln
 install:
-- travis_retry nuget restore -source "https://www.nuget.org/api/v2" ExcelHelper.sln
-script:
+  - nuget restore ExcelHelper.sln
+  script:
   - xbuild /p:Configuration=Release ExcelHelper.sln
