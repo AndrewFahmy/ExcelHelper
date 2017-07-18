@@ -1,0 +1,6 @@
+language: csharp
+solution: ExcelHelper.sln
+install:
+- travis_retry nuget restore -source "https://www.nuget.org/api/v2" ExcelHelper.sln
+script:
+- xbuild ExcelHelper.sln
