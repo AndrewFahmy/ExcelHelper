@@ -1,0 +1,3 @@
+language: csharp
+script:
+  - cd ExcelHelper && xbuild /p:Configuration=Release ExcelHelper.csproj
